@@ -1,5 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+// See https://aka.ms/new-console-template for more information
+
 using Indiv_Proj_TodoList;
 using System.ComponentModel.Design;
 using System.Data;
@@ -19,93 +21,52 @@ namespace Indiv_Proj_TodoList
 {
     public class Program
     {
-
-        //struct Task
-        //{
-        //    public string tsk;
-
-
-        //}
+        public static List<TaskItem> LstTasks { get; private set; }
 
         [STAThread]
-       public static void Main () 
+        public static void Main()
 
         {
+         
+             void NumberTask(List<TaskItem> List)
+                    {
+                        int i = 1;
+                        foreach (var task in List)
+                        {
+                            task.Id = i;
+                            i++;
+                        }
+
+                    }
             Console.WriteLine("Welcome to ToDo List App");
             Console.WriteLine("-------------------------");
 
+            menu:
+                       
+            Console.WriteLine("Pick an Option:");
+            Console.WriteLine("Press (1) to Create task");
+            Console.WriteLine("Press (2) to Update task (Name,Status,Priority ID)");
+            Console.WriteLine("Press (3) to Delete task");
+            Console.WriteLine("Press (4) to Quit");
 
-             menu:
-                Console.WriteLine("Pick an Option:");
-                Console.WriteLine("Press (1) to Create task");
-                Console.WriteLine("Press (2) to Update task (Name,Status,Priority ID)");
-                Console.WriteLine("Press (3) to Delete task");
-                Console.WriteLine("Press (4) to Quit");
-            
-                Console.WriteLine("");
+            Console.WriteLine("");
 
-                int process = Convert.ToInt32(Console.ReadLine());
-                TaskItem task;
-                string dataId;
-                int value;
-                List<TaskItem> lstTasks = new List<TaskItem>();
+            int process = Convert.ToInt32(Console.ReadLine());
 
 
             switch (process)
             {
 
                 case 1:
-                    while (true)
-                    {
 
-                        Console.WriteLine("Enter task name");
-                        string dataName = Console.ReadLine();
+                    //foreach (var it in LstTasks)
+                    //{
+                    //    Console.Write("\t*\t");
+                    //    it.DisplayList();
+                    //}
 
-                        while (true)
-                        {
-                            Console.WriteLine("Task priority Id");
-                            dataId = Console.ReadLine();
-
-                            //Convert.ToInt32(Console.ReadLine());
-
-                            bool Number = int.TryParse(dataId, out value);
-                            if (!Number)
-                            {                                                                 ////brackets should be indented
-                                Console.WriteLine("Incorrect data! Input must be a number");
-                            }
-                            else
-                            {
-                                break;
-                            }
-                        }
-
-                            Console.WriteLine("Task priority Status. Complete or Incomplete ");
-                            string dataStatus = Console.ReadLine();
-
-                            //task = new TaskItem(dataStatus, dataName, value);
-                            //lstTasks.Add(task);
-
-                            this.Add(dataStatus, dataName, value);
-
-                            Console.WriteLine("  Status           Task Name          Priority Id");
-                            Console.WriteLine("__________       ______________       ___________");
-                            Console.WriteLine("");
-
-                            List<TaskItem> Todo = lstTasks.OrderBy(task => task.Id).ToList();
-                                foreach (TaskItem c in Todo)
-                                {
-                                    Console.WriteLine(task.Status.PadRight(20) + task.Name.PadRight(20) + task.Id);
-                                }
-
-
-                            Console.WriteLine("");
-                            Console.WriteLine("Done, task is saved");
-                            Console.WriteLine("");
-
-                            Console.WriteLine("");
-                            goto menu;
-                    }
-
+                    Methods.Input(LstTasks, 0);
+                    goto menu;
 
 
                 //case 2:
@@ -130,13 +91,13 @@ namespace Indiv_Proj_TodoList
 
 
                 case 3:
-                    //task.Name = null;
-                    //task.Id = 0;
-                    //task.Status = null;
-                    //Console.WriteLine("Done, task is deleted");
-                    //goto menu;
+                //task.Name = null;
+                //task.Id = 0;
+                //task.Status = null;
+                //Console.WriteLine("Done, task is deleted");
+                //goto menu;
 
-                   
+
                 case 4:
 
                     break;
@@ -147,11 +108,9 @@ namespace Indiv_Proj_TodoList
                     goto menu;
 
             }
-
-            Console.ReadKey();
-
-       }
-
-    }
+         Console.ReadKey();
+      }
+   }
 }
+
 
