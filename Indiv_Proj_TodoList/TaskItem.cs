@@ -9,40 +9,36 @@ namespace Indiv_Proj_TodoList
 {
     public class TaskItem
     {
-        private string _name;
-        private string _status;
-        private int _id;
-       
 
-        public int Id { get => _id; set => _id = value; }
-        public string Name { get => _name; set => _name = value; }
+        private string _description;
+        private string _isCompleted;
+        private int _itemID;
 
-        public string Status { get => _status; set => _status = value; }
 
-        public string TaskPriority { get; set; } 
+        public string Description { get => _description; set => _description = value; }
+        public string IsCompleted { get => _isCompleted; set => _isCompleted = value; }
+        public int ItemID { get => _itemID; set => _itemID = value; }
+
+
 
         public TaskItem()
         {
 
         }
-               
-        public TaskItem(string taskPriority, string status, string name, int id)
+        public TaskItem(string isCompleted, string description, int itemID)
         {
-            this.Id = id;
-            this.Status = status;
-            this.Name = name;
-            this.TaskPriority = taskPriority;
-        }
-                
+            this.ItemID = itemID;
+            this.Description = description;
+            this.IsCompleted = isCompleted;
 
+        }
+
+        
         public virtual void DisplayList()
-        {
-            //Console.CLear();
-            //Console.WriteLine("\t Task List");
-            Console.WriteLine($"Id: {this.Id}\t|\tDescription: {this.Name}\t|\tStatus: {this.Status}\tTaskPriority: {this.TaskPriority}");
+        {            
+            Console.WriteLine(this.IsCompleted.PadRight(18) + this.Description.PadRight(25) + this.ItemID);
+
         }
-
-
 
     }
 }
